@@ -3,6 +3,7 @@ cells = Array.from(cells)
 
 let currentPlayer = "X"
 
+//each sequence represents a winning combination
 let winningCombinations = [
     [0,1,2],
     [3,4,5],
@@ -14,6 +15,7 @@ let winningCombinations = [
     [2,4,6]
 ]
 
+//function to check if the player managed to make the winning combination
 function checkforWinner(){
     winningCombinations.forEach(function(combination){
         let check = combination.every(idx => cells[idx].innerText.trim() == currentPlayer)
@@ -26,13 +28,14 @@ function checkforWinner(){
    
 }
 
+//function to signal when the player makes the winning combination
 function highlightCells(combination){
     combination.forEach(function(idx){
         cells[idx].classList.add("highlight")  
     })
  
 }
-
+//function to define the priority of each player to play
 cells.forEach(function(cell){
     cell.addEventListener('click', function(){
         if(cell.innerText.trim() != "") return
